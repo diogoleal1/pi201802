@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author diogo
  */
-public abstract class Usuario {
+public class Usuario {
     private int codigo;
     private String nome;
     private String cpf;
