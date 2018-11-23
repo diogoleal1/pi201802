@@ -5,17 +5,27 @@
  */
 package apresentacao;
 
+import javax.swing.JDesktopPane;
+
 /**
  *
  * @author diogo
  */
 public class FrmAbrirConta extends javax.swing.JInternalFrame {
 
+    JDesktopPane pnlPrincipal;
+
     /**
      * Creates new form FrmAbrirConta
      */
     public FrmAbrirConta() {
         initComponents();
+    }
+       
+
+    FrmAbrirConta(JDesktopPane pnlPrincipal) {
+        this();
+        this.pnlPrincipal = pnlPrincipal;
     }
 
     /**
@@ -200,9 +210,9 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
