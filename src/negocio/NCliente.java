@@ -22,9 +22,13 @@ public class NCliente {
     }
     
     
-    public Cliente consultaAbrirConta(int parametro) throws SQLException{
-        return persistencia.consultaAbrirConta(parametro);         
+    public Cliente consultaCliente(String parametro) throws SQLException{
+        return persistencia.consultaCliente(parametro);         
     }
+    
+    public boolean clienteCadastrado(String parametro) throws SQLException{
+        return persistencia.clienteCadastrado(parametro);         
+    } 
     
     
 }

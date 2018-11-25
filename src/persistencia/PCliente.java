@@ -16,30 +16,46 @@ import java.sql.SQLException;
  * @author diogo
  */
 public class PCliente {
-    
-    
-    public Cliente consultaAbrirConta(int parametro) throws SQLException {
 
-        String sql = " SELECT codigo, cpf, nome FROM cliente "
-                    + " WHERE cpf = ?";
+    public Cliente consultaCliente(String parametro) throws SQLException {
 
-        Connection cnn = util.Conexao.getConexao();
-        PreparedStatement ps = cnn.prepareStatement(sql);
+        String sql = " SELECT codigo, cpf, nome, rua, lote, quadra FROM cliente "
+                + " WHERE cpf = ?";
 
-        ps.setInt(1, parametro);
+        Connection conexao = util.Conexao.getConexao();
+        PreparedStatement prd = conexao.prepareStatement(sql);
+        prd.setString(1, parametro);
 
-        ResultSet rs = ps.executeQuery();
+        ResultSet rs = prd.executeQuery();
 
-        Cliente cliente = new Cliente();
+        Cliente retorno = new Cliente();
 
-        while (rs.next()) {
-            cliente.getU().setCpf(rs.getString("cpf"));
-            cliente.getU().setCodigo(rs.getInt("codigo"));
-            cliente.getU().setNome(rs.getString("nome"));
+        if (rs.next()) {
+            retorno.getU().setCpf(rs.getString("cpf"));
+            retorno.getU().setCodigo(rs.getInt("codigo"));
+            retorno.getU().setNome(rs.getString("nome"));
+            retorno.getU().setRua(rs.getString("rua"));
+            retorno.getU().setLote(rs.getString("lote"));
+            retorno.getU().setQuadra(rs.getString("quadra"));
+
         }
-
-        return cliente;
+        return retorno;
     }
 
-    
+    public boolean clienteCadastrado(String parametro) throws SQLException {
+        String sql = " SELECT  codigo qtde FROM cliente "
+                + " WHERE cpf = ?";
+
+        Connection conexao = util.Conexao.getConexao();
+        PreparedStatement prd = conexao.prepareStatement(sql);
+        prd.setString(1, parametro);
+        ResultSet rs = prd.executeQuery();
+
+        if (rs.next()) {
+            return true;
+        }
+        return false;
+
+    }
+
 }
