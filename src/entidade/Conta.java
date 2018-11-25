@@ -14,6 +14,7 @@ public class Conta {
     private double saldo;
     private char tipo; //P - poupança | C - corrente
     private boolean conjunta;
+    private boolean cheque;
     private Agencia agencia;
 
     public int getNumero() {
