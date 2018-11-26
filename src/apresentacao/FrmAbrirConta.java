@@ -5,25 +5,29 @@
  */
 package apresentacao;
 
-import entidade.Cliente;
-import java.util.Vector;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import negocio.NCliente;
 
 /**
  *
- * @author diogo
+ * @author diogo.leal
  */
-public class FrmAbrirConta extends javax.swing.JFrame {
-
+public class FrmAbrirConta extends javax.swing.JInternalFrame {
+    JDesktopPane pnlPrincipalFunc;
+    
+    
+    public FrmAbrirConta(JDesktopPane pnlPrincipalFunc) {
+        this();
+        this.pnlPrincipalFunc = pnlPrincipalFunc;
+    }
+    
+    
     /**
-     * Creates new form FrmAbrirConta
+     * Creates new form FrmAbrirConta2
      */
     public FrmAbrirConta() {
         initComponents();
-
     }
 
     /**
@@ -35,14 +39,6 @@ public class FrmAbrirConta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        pnlPrinc = new javax.swing.JPanel();
-        pnlResultadoCliente = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbtCliente = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -52,94 +48,15 @@ public class FrmAbrirConta extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
-        pnlEscolherCliente = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbCPF = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
         btnConsultar = new javax.swing.JButton();
-        pnlCliente = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
-        btnCadastrar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        lbCadCPF = new javax.swing.JLabel();
-        lbNome = new javax.swing.JLabel();
-        lbRua = new javax.swing.JLabel();
-        lbQuadra = new javax.swing.JLabel();
-        lbLote = new javax.swing.JLabel();
-        lbCidade = new javax.swing.JLabel();
-        txtCadCPF = new javax.swing.JTextField();
-        txtNome = new javax.swing.JTextField();
-        txtQuadra = new javax.swing.JTextField();
-        txtRua = new javax.swing.JTextField();
-        txtLote = new javax.swing.JTextField();
-        txtCidade = new javax.swing.JTextField();
+        pnlResultadoCliente = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbtCliente = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        setTitle("Abrir Conta");
-
-        pnlResultadoCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
-
-        tbtCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "CPF", "Nome"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tbtCliente);
-
-        javax.swing.GroupLayout pnlResultadoClienteLayout = new javax.swing.GroupLayout(pnlResultadoCliente);
-        pnlResultadoCliente.setLayout(pnlResultadoClienteLayout);
-        pnlResultadoClienteLayout.setHorizontalGroup(
-            pnlResultadoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResultadoClienteLayout.createSequentialGroup()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-        );
-        pnlResultadoClienteLayout.setVerticalGroup(
-            pnlResultadoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Conta"));
 
@@ -164,7 +81,7 @@ public class FrmAbrirConta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addGap(35, 35, 35)
-                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jComboBox1, 0, 477, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -199,9 +116,7 @@ public class FrmAbrirConta extends javax.swing.JFrame {
                     .addComponent(jLabel7)))
         );
 
-        pnlEscolherCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Escolher Cliente"));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Escolher Cliente"));
 
         lbCPF.setText("CPF");
 
@@ -242,156 +157,40 @@ public class FrmAbrirConta extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlResultadoCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tbtCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-
+                "CPF", "Nome"
             }
-        ));
-        jScrollPane4.setViewportView(tblCliente);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
 
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.setEnabled(false);
-
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setEnabled(false);
-
-        lbCadCPF.setText("CPF");
-
-        lbNome.setText("Nome");
-
-        lbRua.setText("Rua");
-
-        lbQuadra.setText("Quadra");
-
-        lbLote.setText("Lote");
-
-        lbCidade.setText("Cidade");
-
-        txtCadCPF.setEnabled(false);
-
-        txtNome.setEnabled(false);
-
-        txtQuadra.setEnabled(false);
-
-        txtRua.setEnabled(false);
-        txtRua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRuaActionPerformed(evt);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
+        jScrollPane3.setViewportView(tbtCliente);
 
-        txtLote.setEnabled(false);
-
-        txtCidade.setEnabled(false);
-
-        javax.swing.GroupLayout pnlClienteLayout = new javax.swing.GroupLayout(pnlCliente);
-        pnlCliente.setLayout(pnlClienteLayout);
-        pnlClienteLayout.setHorizontalGroup(
-            pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4)
-            .addGroup(pnlClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlClienteLayout.createSequentialGroup()
-                        .addComponent(lbCadCPF)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCadCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClienteLayout.createSequentialGroup()
-                        .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlClienteLayout.createSequentialGroup()
-                                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlClienteLayout.createSequentialGroup()
-                                        .addComponent(lbNome)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlClienteLayout.createSequentialGroup()
-                                        .addComponent(lbRua)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlClienteLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbLote)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28))
-                                    .addGroup(pnlClienteLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(pnlClienteLayout.createSequentialGroup()
-                                                .addComponent(lbCidade)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(pnlClienteLayout.createSequentialGroup()
-                                                .addComponent(btnCadastrar)
-                                                .addGap(31, 31, 31)
-                                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 12, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClienteLayout.createSequentialGroup()
-                                .addComponent(lbQuadra)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(19, 19, 19))))
-        );
-        pnlClienteLayout.setVerticalGroup(
-            pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlClienteLayout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCadCPF)
-                    .addComponent(txtCadCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbLote)
-                    .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbRua)
-                    .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbCidade)
-                        .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbQuadra)
-                    .addComponent(txtQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnCadastrar))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout pnlEscolherClienteLayout = new javax.swing.GroupLayout(pnlEscolherCliente);
-        pnlEscolherCliente.setLayout(pnlEscolherClienteLayout);
-        pnlEscolherClienteLayout.setHorizontalGroup(
-            pnlEscolherClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEscolherClienteLayout.createSequentialGroup()
-                .addGroup(pnlEscolherClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout pnlResultadoClienteLayout = new javax.swing.GroupLayout(pnlResultadoCliente);
+        pnlResultadoCliente.setLayout(pnlResultadoClienteLayout);
+        pnlResultadoClienteLayout.setHorizontalGroup(
+            pnlResultadoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResultadoClienteLayout.createSequentialGroup()
+                .addComponent(jScrollPane3)
                 .addContainerGap())
         );
-        pnlEscolherClienteLayout.setVerticalGroup(
-            pnlEscolherClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEscolherClienteLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        pnlResultadoClienteLayout.setVerticalGroup(
+            pnlResultadoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jButton2.setText("Confirmar");
@@ -403,55 +202,49 @@ public class FrmAbrirConta extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnlPrincLayout = new javax.swing.GroupLayout(pnlPrinc);
-        pnlPrinc.setLayout(pnlPrincLayout);
-        pnlPrincLayout.setHorizontalGroup(
-            pnlPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrincLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(pnlEscolherCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlResultadoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(41, 41, 41)
-                .addComponent(jButton3)
-                .addGap(29, 29, 29))
-        );
-        pnlPrincLayout.setVerticalGroup(
-            pnlPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrincLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlEscolherCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlResultadoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlPrinc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlResultadoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(41, 41, 41)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrinc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlResultadoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
 
@@ -459,16 +252,9 @@ public class FrmAbrirConta extends javax.swing.JFrame {
             if (txtCPF.getText().isEmpty()) {
                 throw new Exception("Informe o CPF");
             }
-            NCliente negocio = new NCliente();
-            boolean cliCadastrado = negocio.clienteCadastrado(txtCPF.getText());
-            if (cliCadastrado) {
-                dadosCliente(txtCPF.getText());
-                ajustarTabela(50);
-            } else {
-                ajustarTabela(0);
-                liberarCadCli(true);                
-            }
-
+//            NCliente negocio = new NCliente();
+//            boolean cliCadastrado = negocio.clienteCadastrado(txtCPF.getText());
+//            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -476,55 +262,13 @@ public class FrmAbrirConta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConsultarActionPerformed
 
-    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCPFActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuaActionPerformed
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmFuncionario().setVisible(true);
-            }
-        });
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -538,131 +282,10 @@ public class FrmAbrirConta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lbCPF;
-    private javax.swing.JLabel lbCadCPF;
-    private javax.swing.JLabel lbCidade;
-    private javax.swing.JLabel lbLote;
-    private javax.swing.JLabel lbNome;
-    private javax.swing.JLabel lbQuadra;
-    private javax.swing.JLabel lbRua;
-    private javax.swing.JPanel pnlCliente;
-    private javax.swing.JPanel pnlEscolherCliente;
-    private javax.swing.JPanel pnlPrinc;
     private javax.swing.JPanel pnlResultadoCliente;
-    private javax.swing.JTable tblCliente;
     private javax.swing.JTable tbtCliente;
     private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtCadCPF;
-    private javax.swing.JTextField txtCidade;
-    private javax.swing.JTextField txtLote;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtQuadra;
-    private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
-
-    private void limparPnlCliente() {
-        btnConsultar.setVisible(false);
-        lbCPF.setVisible(false);
-        txtCPF.setVisible(false);
-    }
-
-    private void dadosCliente(String cpf) {
-        try {
-
-            Vector<String> cabecalho = new Vector();
-            cabecalho.add("Código");
-            cabecalho.add("Nome");
-            cabecalho.add("CPF");
-            cabecalho.add("Endereco");
-
-            NCliente negocio = new NCliente();
-            Vector linhas = new Vector();
-
-            Cliente cliente = new Cliente();
-            cliente = negocio.consultaCliente(cpf);
-
-            Vector<String> detalhe = new Vector();
-
-            detalhe.add(cliente.getU().getCodigo() + "");
-            detalhe.add(cliente.getU().getNome() + "");
-            detalhe.add(cliente.getU().getCpf() + "");
-            detalhe.add(cliente.getU().getRua() + " - " + cliente.getU().getLote() + " - " + cliente.getU().getQuadra() + "");
-
-            linhas.add(detalhe);
-
-            tblCliente.setModel(new DefaultTableModel(linhas, cabecalho));
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
-
-    private void ajustarTabela( int tamanho) {
-
-        //Ajustar Tabela
-        javax.swing.GroupLayout pnlClienteLayout = new javax.swing.GroupLayout(pnlCliente);
-        pnlCliente.setLayout(pnlClienteLayout);
-        pnlClienteLayout.setHorizontalGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane4)
-                .addGroup(pnlClienteLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCadastrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar))
-        );
-        pnlClienteLayout.setVerticalGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlClienteLayout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, tamanho, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                        .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnCadastrar)
-                                .addComponent(btnCancelar))
-                        .addContainerGap())
-        );
-        //ocultar botões, campos, e label
-        liberarCadCli(false);
-    }
-
-    private void liberarCadCli(boolean b) {
-        //ocultar botões, campos, e label do pnlCliente
-        txtCadCPF.setVisible(b);
-        txtCidade.setVisible(b);
-        txtLote.setVisible(b);
-        txtNome.setVisible(b);
-        txtQuadra.setVisible(b);
-        txtRua.setVisible(false);
-        btnCadastrar.setVisible(b);
-        btnCancelar.setVisible(b);
-        lbCadCPF.setVisible(b);
-        lbCidade.setVisible(b);
-        lbLote.setVisible(b);
-        lbNome.setVisible(b);
-        lbQuadra.setVisible(b);
-        lbRua.setVisible(b);
-
-        if (b) {
-            txtCadCPF.setEnabled(b);
-            txtCidade.setEnabled(b);
-            txtLote.setEnabled(b);
-            txtNome.setEnabled(b);
-            txtQuadra.setEnabled(b);
-            txtRua.setEnabled(false);
-            btnCadastrar.setEnabled(b);
-            btnCancelar.setEnabled(b);
-            lbCadCPF.setEnabled(b);
-            lbCidade.setEnabled(b);
-            lbLote.setEnabled(b);
-            lbNome.setEnabled(b);
-            lbQuadra.setEnabled(b);
-            lbRua.setEnabled(b);
-        }
-
-    }
-
 }
