@@ -22,8 +22,8 @@ public class NCliente {
     }
     
     
-    public Cliente consultaCliente(String parametro) throws SQLException{
-        return persistencia.consultaCliente(parametro);         
+    public Cliente consulta(String parametro) throws SQLException{
+        return persistencia.consulta(parametro);         
     }
     
     public boolean clienteCadastrado(String parametro) throws SQLException{

@@ -15,11 +15,11 @@ import negocio.NCliente;
  */
 public class FrmAbrirConta extends javax.swing.JInternalFrame {
 
-    JDesktopPane pnlPrincipalFunc;
+    JDesktopPane pnlPrincipal;
 
     public FrmAbrirConta(JDesktopPane pnlPrincipalFunc) {
         this();
-        this.pnlPrincipalFunc = pnlPrincipalFunc;
+        this.pnlPrincipal = pnlPrincipalFunc;
     }
 
     /**
@@ -56,6 +56,8 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
         tbtCliente = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
+        setTitle("Abertura de Conta");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Conta"));
 
@@ -125,7 +127,7 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Consulta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -140,9 +142,9 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(lbCPF)
                 .addGap(36, 36, 36)
-                .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -260,6 +262,11 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
             NCliente negocio = new NCliente();
             boolean cliCadastrado = negocio.clienteCadastrado(txtCPF.getText());
             if (cliCadastrado) {
+                FrmPesCliente janela = new FrmPesCliente(pnlPrincipal,txtCPF.getText());
+                pnlPrincipal.add(janela);
+                janela.setVisible(true);
+                this.dispose();            
+               
                 //dadosCliente(txtCPF.getText());
                 //ajustarTabela(50);
             } else {

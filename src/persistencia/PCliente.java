@@ -17,7 +17,7 @@ import java.sql.SQLException;
  */
 public class PCliente {
 
-    public Cliente consultaCliente(String parametro) throws SQLException {
+    public Cliente consulta(String parametro) throws SQLException {
 
         String sql = " SELECT codigo, cpf, nome, rua, lote, quadra FROM cliente "
                 + " WHERE cpf = ?";

@@ -5,12 +5,21 @@
  */
 package apresentacao;
 
+import entidade.Cliente;
+import java.util.Vector;
+import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import negocio.NCliente;
+
 /**
  *
  * @author diogo.leal
  */
 public class FrmPesCliente extends javax.swing.JInternalFrame {
 
+    
+    JDesktopPane pnlPrincipal;
     /**
      * Creates new form FrmPesCliente
      */
@@ -18,6 +27,12 @@ public class FrmPesCliente extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public FrmPesCliente(JDesktopPane pnlPrincipal, String cpf) {
+        this();
+        this.pnlPrincipal = pnlPrincipal;
+        carregarCliente(cpf);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,10 +43,10 @@ public class FrmPesCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPesCliente = new javax.swing.JTable();
         btnSair = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPesCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -42,7 +57,7 @@ public class FrmPesCliente extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPesCliente);
 
         btnSair.setText("Sair");
 
@@ -68,10 +83,42 @@ public class FrmPesCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void carregarCliente(String cpf) {
+
+        try {
+
+            Vector<String> cabecalho = new Vector();
+            cabecalho.add("Código");
+            cabecalho.add("Nome");
+            cabecalho.add("CPF");
+            cabecalho.add("Endereco");
+
+            NCliente negocio = new NCliente();
+            Vector linhas = new Vector();
+
+            Cliente cliente = new Cliente();
+            cliente = negocio.consulta(cpf);
+
+            Vector<String> detalhe = new Vector();
+
+            detalhe.add(cliente.getU().getCodigo() + "");
+            detalhe.add(cliente.getU().getNome() + "");
+            detalhe.add(cliente.getU().getCpf() + "");
+            detalhe.add(cliente.getU().getRua() + " - " + cliente.getU().getLote() + " - " + cliente.getU().getQuadra() + "");
+
+            linhas.add(detalhe);
+
+            tblPesCliente.setModel(new DefaultTableModel(linhas, cabecalho));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSair;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPesCliente;
     // End of variables declaration//GEN-END:variables
 }
