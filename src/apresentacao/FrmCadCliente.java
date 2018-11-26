@@ -21,12 +21,12 @@ import negocio.NCliente;
  */
 public class FrmCadCliente extends javax.swing.JInternalFrame {
 
-    JPanel pnlPrincipal;
+    JDesktopPane pnlPrincipal;
 
     /**
      * Creates new form FrmPesFornecedor
      */
-    public FrmCadCliente(JPanel pnlPrincipal) throws SQLException {
+    public FrmCadCliente(JDesktopPane pnlPrincipal) throws SQLException {
         this();
         this.pnlPrincipal = pnlPrincipal;
         //carregarTabela(cpf);
@@ -38,6 +38,7 @@ public class FrmCadCliente extends javax.swing.JInternalFrame {
     public FrmCadCliente() {
         initComponents();
     }
+
 
    
     /**

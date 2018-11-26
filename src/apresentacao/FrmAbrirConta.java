@@ -14,15 +14,14 @@ import negocio.NCliente;
  * @author diogo.leal
  */
 public class FrmAbrirConta extends javax.swing.JInternalFrame {
+
     JDesktopPane pnlPrincipalFunc;
-    
-    
+
     public FrmAbrirConta(JDesktopPane pnlPrincipalFunc) {
         this();
         this.pnlPrincipalFunc = pnlPrincipalFunc;
     }
-    
-    
+
     /**
      * Creates new form FrmAbrirConta2
      */
@@ -51,7 +50,7 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         lbCPF = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
-        btnConsultar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         pnlResultadoCliente = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbtCliente = new javax.swing.JTable();
@@ -126,10 +125,10 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
             }
         });
 
-        btnConsultar.setText("Consultar");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -141,9 +140,10 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(lbCPF)
                 .addGap(36, 36, 36)
-                .addComponent(txtCPF)
-                .addGap(74, 74, 74)
-                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +152,9 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnConsultar))
+                        .addComponent(jButton1))
                     .addComponent(lbCPF))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pnlResultadoCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
@@ -236,7 +236,7 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         pack();
@@ -246,30 +246,38 @@ public class FrmAbrirConta extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCPFActionPerformed
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-
-        try {
-            if (txtCPF.getText().isEmpty()) {
-                throw new Exception("Informe o CPF");
-            }
-//            NCliente negocio = new NCliente();
-//            boolean cliCadastrado = negocio.clienteCadastrado(txtCPF.getText());
-//            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        try {
+            if (txtCPF.getText().isEmpty()) {
+                throw new Exception("Informe o CPF");
+            }
+            NCliente negocio = new NCliente();
+            boolean cliCadastrado = negocio.clienteCadastrado(txtCPF.getText());
+            if (cliCadastrado) {
+                //dadosCliente(txtCPF.getText());
+                //ajustarTabela(50);
+            } else {
+                //ajustarTabela(0);
+                //liberarCadCli(true);                
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;

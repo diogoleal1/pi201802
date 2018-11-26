@@ -11,17 +11,29 @@ import javax.swing.JDesktopPane;
  *
  * @author diogo
  */
-public class FrmOperFuncionario extends javax.swing.JFrame {
+public class FrmOperFuncionario extends javax.swing.JInternalFrame {
 
     
+    
+    JDesktopPane pnlPrincipal;
     /**
-     * Creates new form FrmFuncionario2
+     * Creates new form FrmLoginCliente2
+     */
+    
+
+    /**
+     * Creates new form FrmOperFuncionario2
      */
     public FrmOperFuncionario() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
+     public FrmOperFuncionario(JDesktopPane pnlPrincipal) {
+        this();
+        this.pnlPrincipal = pnlPrincipal;        
+    }
+   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,13 +43,10 @@ public class FrmOperFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlPrincipalFunc = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         btnAbrirConta = new javax.swing.JButton();
         btnOperacoesConta = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Operações"));
 
@@ -88,38 +97,21 @@ public class FrmOperFuncionario extends javax.swing.JFrame {
                 .addComponent(btnSair))
         );
 
-        pnlPrincipalFunc.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout pnlPrincipalFuncLayout = new javax.swing.GroupLayout(pnlPrincipalFunc);
-        pnlPrincipalFunc.setLayout(pnlPrincipalFuncLayout);
-        pnlPrincipalFuncLayout.setHorizontalGroup(
-            pnlPrincipalFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrincipalFuncLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(787, Short.MAX_VALUE))
-        );
-        pnlPrincipalFuncLayout.setVerticalGroup(
-            pnlPrincipalFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrincipalFuncLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(512, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlPrincipalFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlPrincipalFunc)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,24 +119,22 @@ public class FrmOperFuncionario extends javax.swing.JFrame {
 
     private void btnAbrirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirContaActionPerformed
         try {
-            
-            FrmAbrirConta janela = new FrmAbrirConta(pnlPrincipalFunc);
-            pnlPrincipalFunc.add(janela);
+
+            FrmAbrirConta janela = new FrmAbrirConta(pnlPrincipal);
+            pnlPrincipal.add(janela);
             janela.setVisible(true);
-            
+
         } catch (Exception e) {
-            
-       }
-        
-        
-        
+
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAbrirContaActionPerformed
 
     private void btnOperacoesContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOperacoesContaActionPerformed
-//        FrmMovConsulta frmMovConsulta = new FrmMovConsulta();
-//        frmMovConsulta.setVisible(true);
-//        dispose();
+        //        FrmMovConsulta frmMovConsulta = new FrmMovConsulta();
+        //        frmMovConsulta.setVisible(true);
+        //        dispose();
     }//GEN-LAST:event_btnOperacoesContaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -152,49 +142,11 @@ public class FrmOperFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSairActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmOperFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmOperFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmOperFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmOperFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmOperFuncionario().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrirConta;
     private javax.swing.JButton btnOperacoesConta;
     private javax.swing.JButton btnSair;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JDesktopPane pnlPrincipalFunc;
     // End of variables declaration//GEN-END:variables
 }
